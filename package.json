@@ -4,7 +4,8 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "dev:fixed": "nodemon src/server.fix.ts"
   },
   "dependencies": {
     "express": "^4.18.2"
