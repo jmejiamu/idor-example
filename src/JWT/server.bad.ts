@@ -10,7 +10,7 @@ const USERS = [
   { id: "u1", email: "user@test.com", password: "1234", role: "user" },
 ];
 
-const SECRET = "secret123"; // ❌ WEAK SECRET
+const SECRET = "secret123";
 
 // LOGIN
 app.post("/login", (req, res) => {
@@ -19,13 +19,11 @@ app.post("/login", (req, res) => {
   const user = USERS.find((u) => u.email === email && u.password === password);
   if (!user) return res.status(401).json({ error: "Invalid credentials" });
 
-  // ❌ NO EXPIRATION
   const token = jwt.sign({ id: user.id, role: user.role }, SECRET);
 
   res.json({ token });
 });
 
-// ❌ BAD VERIFY – DOES NOT VALIDATE OPTIONS
 app.get("/admin", (req, res) => {
   const token = req.headers.authorization?.replace("Bearer ", "");
   if (!token) return res.status(401).json({ error: "No token" });
