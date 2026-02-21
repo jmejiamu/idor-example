@@ -7,7 +7,8 @@
     "dev:bad": "nodemon src/idor-example/server.bad.ts",
     "dev:fixed": "nodemon src/idor-example/server.fix.ts",
     "dev:jwt-bad": "nodemon src/JWT/server.bad.ts",
-    "dev:jwt-fixed": "nodemon src/JWT/server.fixed.ts"
+    "dev:jwt-fixed": "nodemon src/JWT/server.fixed.ts",
+    "dev:access-refresh-tokens": "nodemon src/access-refresh-token/access-refresh-token.ts"
   },
   "dependencies": {
     "cors": "^2.8.6",
