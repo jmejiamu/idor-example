@@ -84,11 +84,11 @@ function requireAuth(req: AuthedRequest, res: Response, next: NextFunction) {
   if (!token) return res.status(401).json({ error: "Missing access token" });
 
   try {
-    const payload = jwt.verify(
-      token,
-      process.env.ACCESS_TOKEN_SECRET as string,
-      { algorithms: ["HS256"], issuer: ISSUER, audience: AUDIENCE },
-    ) as JwtPayload;
+    const payload = jwt.verify(token, ACCESS_TOKEN_SECRET, {
+      algorithms: ["HS256"],
+      issuer: ISSUER,
+      audience: AUDIENCE,
+    }) as JwtPayload;
 
     req.user = {
       id: String(payload.sub),
@@ -118,6 +118,7 @@ app.post("/auth/login", (req: Request, res: Response) => {
 
 // REFRESH (with rotation)
 app.post("/auth/refresh", (req: Request, res: Response) => {
+  console.log("[*] Refresh token request received");
   const { refreshToken } = req.body as { refreshToken?: string };
   if (!refreshToken)
     return res.status(401).json({ error: "Missing refresh token" });
@@ -146,6 +147,8 @@ app.post("/auth/refresh", (req: Request, res: Response) => {
   const newRefreshToken = signRefreshToken(user);
   saveRefreshToken(userId, newRefreshToken);
 
+  console.log("[*] Refresh token rotated");
+
   return res.json({
     accessToken: newAccessToken,
     refreshToken: newRefreshToken,
@@ -154,6 +157,7 @@ app.post("/auth/refresh", (req: Request, res: Response) => {
 
 // LOGOUT (revoke)
 app.post("/auth/logout", (req: Request, res: Response) => {
+  console.log("[*] Logout request received");
   const { refreshToken } = req.body as { refreshToken?: string };
   if (!refreshToken) return res.json({ ok: true });
 
@@ -171,6 +175,7 @@ app.post("/auth/logout", (req: Request, res: Response) => {
 
 // Protected route
 app.get("/me", requireAuth, (req: AuthedRequest, res: Response) => {
+  console.log("[*] Authenticated user");
   return res.json({
     message: "Protected route success ✅",
     user: req.user,
