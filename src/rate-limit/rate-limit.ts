@@ -7,8 +7,8 @@ export const loginLimiter: RateLimitRequestHandler = rateLimit({
   message: {
     error: "Too many login attempts. Please try again later.",
   },
-  standardHeaders: true, // returns RateLimit-* headers
-  legacyHeaders: false, // disables X-RateLimit-* headers
+  standardHeaders: true,
+  legacyHeaders: false,
 });
 
 const app = express();
