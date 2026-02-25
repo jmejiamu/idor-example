@@ -9,9 +9,11 @@
     "dev:jwt-bad": "nodemon src/JWT/server.bad.ts",
     "dev:jwt-fixed": "nodemon src/JWT/server.fixed.ts",
     "dev:access-refresh-tokens": "nodemon src/access-refresh-token/access-refresh-token.ts",
-    "dev:rate-limit": "nodemon src/rate-limit/rate-limit.ts"
+    "dev:rate-limit": "nodemon src/rate-limit/rate-limit.ts",
+    "dev:password-hashing": "nodemon src/password-hashing/password.hashing.ts"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^4.18.2",
@@ -19,6 +21,7 @@
     "jsonwebtoken": "^9.0.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/cors": "^2.8.19",
     "@types/express": "^4.17.17",
     "@types/express-rate-limit": "^5.1.3",
