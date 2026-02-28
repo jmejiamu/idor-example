@@ -10,7 +10,8 @@
     "dev:jwt-fixed": "nodemon src/JWT/server.fixed.ts",
     "dev:access-refresh-tokens": "nodemon src/access-refresh-token/access-refresh-token.ts",
     "dev:rate-limit": "nodemon src/rate-limit/rate-limit.ts",
-    "dev:password-hashing": "nodemon src/password-hashing/password.hashing.ts"
+    "dev:password-hashing": "nodemon src/password-hashing/password.hashing.ts",
+    "dev:validation": "nodemon src/validation-auth/validation.auth.ts"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
@@ -18,7 +19,8 @@
     "dotenv": "^17.3.1",
     "express": "^4.18.2",
     "express-rate-limit": "^8.2.1",
-    "jsonwebtoken": "^9.0.3"
+    "jsonwebtoken": "^9.0.3",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
