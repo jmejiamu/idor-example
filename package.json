@@ -11,9 +11,11 @@
     "dev:access-refresh-tokens": "nodemon src/access-refresh-token/access-refresh-token.ts",
     "dev:rate-limit": "nodemon src/rate-limit/rate-limit.ts",
     "dev:password-hashing": "nodemon src/password-hashing/password.hashing.ts",
-    "dev:validation": "nodemon src/validation-auth/validation.auth.ts"
+    "dev:validation": "nodemon src/validation-auth/validation.auth.ts",
+    "dev:validation-sdk": "nodemon src/validation-sdk/validation.auth.sdk.ts"
   },
   "dependencies": {
+    "@jmejiamu01/app-contracts": "^1.0.1",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
